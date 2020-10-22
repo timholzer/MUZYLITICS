@@ -27,12 +27,25 @@ let searchTerm = "";
 const onSearch = (searchText) => {
 	//Validate search, just trim? Don't know what else we can really validate
 	seachTerm = searchText.trim();
+	saveSearchToLocalStorage(searchTerm);
+	//Call taste dive
+	
+	apiCall(url, )
+};
+
+const tasteDiveApiCall = () => {
+	let url = tasteDiveApiUrl + searchTerm + "&type=music";
+	$.ajax( {url: url, method: 'GET' } )
+		.then( function(res) {
+			
+		}
+	);
 };
 
 /**
  * Make api calls
  */
-const apiCall = (url) => {
+const apiCall = (url, callbackFunction) => {
 	$.ajax( {url: url, method: 'GET'}).then(res => {
 		
 	});
