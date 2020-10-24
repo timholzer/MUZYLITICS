@@ -81,24 +81,28 @@ const apiCall = (url, callbackFunction) => {
 	});
 };
 
-/**
- * Resete the video div, just emptys the div
- */
-const resetEmbeddedVideos = () => {
 
+let = searchHistoryArray = []
+
+storedSearchHistory = JSON.parse(localStorage.getItem("Past Searches")) || [];
+/**
+ * Adds search text to array in localstorage
+ */
+const saveSearchToLocalStorage = (searchText) => {
+    searchHistoryArray.push(searchTerm);
+    localStorage.setItem("Past Searches", JSON.stringify(searchHistoryArray));
 };
 
 /**
- * Adds search text to array in localstorage
- */
-const saveSearchToLocalStorage = (searchText) => {
-
-};
-
-/**
- * Retrieves array of searches from localStorage
- * Adds to the DOM
- */
-const displaySavedSearches = () => {
-
+ * Retrieves array of searches from localStorage
+ * Adds to the DOM
+ */
+const displaySavedSearches = () => {
+    for (i = 0; i < storedSearchHistory.length; i++) {
+        var hist = document.createElement("P");  
+        hist.innerHTML = searchHistoryArray[i];
+        //add a search history div with this ID
+        document.getElementById("searchHistory").appendChild(hist); 
+        
+    }
 };
