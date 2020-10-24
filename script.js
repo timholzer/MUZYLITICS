@@ -28,18 +28,48 @@ const onSearch = (searchText) => {
 	//Validate search, just trim? Don't know what else we can really validate
 	seachTerm = searchText.trim();
 	saveSearchToLocalStorage(searchTerm);
-	//Call taste dive
-	
-	apiCall(url, )
+
+	//Call taste dive passing in the artist, saving the results for similar artists to a variable
+	//Save the results for similar artists from tasteDive in a variable
+	let similarArtists = tasteDiveApiCall();
+
+	//Call youtube api, search for videos from the top 3? similar artists
+	for(i = 0; i < 3; i++)
+	{
+		let videos = 
+	}
+
+	//Add a couple embeddd videos and links to the screen for each of the top 3 similar artists
 };
 
-const tasteDiveApiCall = () => {
+/**
+ * Call tasteDive's API searching for an artists similar to the artist passed in.
+ * Return the results
+ */
+const tasteDiveApiCall = async () => {
+	//Build the url
 	let url = tasteDiveApiUrl + searchTerm + "&type=music";
-	$.ajax( {url: url, method: 'GET' } )
-		.then( function(res) {
-			
-		}
-	);
+
+	//Ajax call to the built URL, wait for a response, then return it
+	return await $.ajax( {url: url, method: 'GET' } ).then( res => {
+		//Return the response from the call
+		return res.response;
+	});
+};
+
+/**
+ * Call Youtube's API searching for videos artist passed in.
+ * Return the results
+ */
+const youtubeApiCall = async (artist) => {
+	//Build the url
+	let url = youtubeApiUrl + artist + "&type=music" + key;
+
+	//Ajax call to the built URL, wait for a response, then return it
+	return await $.ajax( {url: url, method: 'GET' } ).then( res => {
+		//Return the response from the call
+		return res.response;
+	});
 };
 
 /**
