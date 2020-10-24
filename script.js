@@ -119,8 +119,11 @@ $(function() {
 	 * Adds search text to array in localstorage
 	 */
 	const saveSearchToLocalStorage = (searchText) => {
-		storedSearchHistory .push(searchText);
-	    localStorage.setItem("Past Searches", JSON.stringify(storedSearchHistory ));
+		if(!storedSearchHistory.includes(searchText))
+		{
+			storedSearchHistory.push(searchText);
+		    localStorage.setItem("Past Searches", JSON.stringify(storedSearchHistory ));
+		}
 	};
 	
 	/**
