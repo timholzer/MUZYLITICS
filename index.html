@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<title>Title</title>
+	<title>Similar Artists</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,12 +13,8 @@
   <body>
 	<header>
 		<div class="container">
-			<div class="navbar-header">
-				<a href="" class="navbar-brand">
-					<img src="" alt="">
-				</a>
-			</div>
-			<nav>
+			<nav class="navbar navbar-dark d-flex">
+				<span class="navbar-brand mb-0 h1 mx-auto">Find Similar Artists</span>
 				<ul class="nav navbar-nav navbar-link">
 					<li class="active"><a href="index.html"></a></li>
 				</ul>
@@ -53,17 +49,7 @@
 						<div class="content-header">
 							<h2><i class="fa fa-music red"></i> </h2>
 							<div class="tab">
-<<<<<<< HEAD
 								
-=======
-								<a href=""></a>
-								<span class="line">|</span>
-								<a href=""></a>
-								<span class="line">|</span>
-								<a href=""></a>
-								<span class="line">|</span>
-								<a href=""></a>
->>>>>>> 18aae2e50396de55837ab3107725d0f49d82c60b
 							</div>
 						</div>
 						<div class="category">
@@ -86,18 +72,26 @@
 		</div>
 	</div>
 	<!-- APIs: Spotify, TasteDive, Itunes Search, Youtube -->
-	<div class="form-group m-5">
-	  <label for="search"></label>
-	  <input type="text"
-		class="form-control" name="search" id="search-input" aria-describedby="helpId" placeholder="Search an artist to find similar artists">
-	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 border-right">
+				<h4>Past Searches</h4>
+				<ul id="searchHistory" class="pl-0">
+	
+				</ul>
+			</div>
+			<div class="col-lg-9">
+				<div class="form-group pt-3">
+					<label for="search"></label>
+					<input type="text"
+						class="form-control" name="search" id="search-input" aria-describedby="helpId" placeholder="Search an artist to find similar artists">
+				</div>
+			</div>
+		</div>
 
-	<div id="video-div">
+		<div id="video-div">
 
-	</div>
-
-	<div id="searchHistory">
-
+		</div>
 	</div>
 	<!-- Features 
 		1. TasteDive: Finding Similar Content

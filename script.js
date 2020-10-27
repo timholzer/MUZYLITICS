@@ -134,7 +134,7 @@ $(function() {
 	 */
 	const displaySavedSearches = () => {
 	    for (i = 0; i < storedSearchHistory.length; i++) {
-	        var hist = $("<button>").addClass('past-search'); //document.createElement("P");  
+	        var hist = $("<li>").addClass('past-search list-group-item'); //document.createElement("P");  
 			let text = storedSearchHistory[i];
 	
 			hist.attr('data-text', text);
