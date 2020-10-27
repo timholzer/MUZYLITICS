@@ -39,7 +39,9 @@ $(function() {
 		//Save the results for similar artists from tasteDive in a variable
 		let similarArtists = await tasteDiveApiCall(searchText);
 		console.log(similarArtists);
-	
+        
+        if (similarArtists.length < 1)
+        return;
 		//Call youtube api, search for videos from the top 3? similar artists
 		for(i = 0; i < 5; i++)
 		{
