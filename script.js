@@ -39,9 +39,14 @@ $(function() {
 		//Save the results for similar artists from tasteDive in a variable
 		let similarArtists = await tasteDiveApiCall(searchText);
 		console.log(similarArtists);
-        
-        if (similarArtists.length < 1)
-        return;
+		
+		//If there were no results just return rather than calling the youtube api
+		if (similarArtists.length < 1)
+		{
+			buildRick();
+			return;
+		}
+			
 		//Call youtube api, search for videos from the top 3? similar artists
 		for(i = 0; i < 5; i++)
 		{
@@ -60,9 +65,6 @@ $(function() {
 	
 			
 			//Embed video, add link to DOM
-	
-	
-			// <iframe width="560" height="315" src="https://www.youtube.com/embed/cSp1dM2Vj48" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		}
 	
 		//Add a couple embeddd videos and links to the screen for each of the top 3 similar artists
@@ -81,6 +83,9 @@ $(function() {
 		let result = await $.ajax( {url: url, method: 'GET' } ).then( res => {
 			//Return the response from the call
 			return res.Similar.Results;
+		}).catch(error => {
+			alert("There was an error " + error);
+			console.error(error);
 		});
 		return result;
 	};
@@ -94,9 +99,14 @@ $(function() {
 		let url = youtubeApiUrl + artist + youtubeKey;
 	
 		//Ajax call to the built URL, wait for a response, then return it
-		return await $.ajax( {url: url, method: 'GET' } ).then( res => {
+		return await $.ajax( {url: url, method: 'GET'} ).then( res => {
 			//Return the response from the call
 			return res;
+		}).catch(error => {
+			alert(error);
+			
+			console.error(error);
+			return [];
 		});
 	};
 	
@@ -107,6 +117,11 @@ $(function() {
 		$.ajax( {url: url, method: 'GET'}).then(res => {
 			
 		});
+	};
+
+	const buildRick = () => {
+		let rickRollP = $("<a>").attr('href', 'https://www.youtube.com/watch?v=oHg5SJYRHA0').text('An error occurred, click here to enjoy the coolest song ever.');
+		$('#video-div').append(rickRollP);
 	};
 	
 	/*
@@ -134,7 +149,7 @@ $(function() {
 	 */
 	const displaySavedSearches = () => {
 	    for (i = 0; i < storedSearchHistory.length; i++) {
-	        var hist = $("<button>").addClass('past-search'); //document.createElement("P");  
+	        var hist = $("<li>").addClass('past-search list-group-item'); //document.createElement("P");  
 			let text = storedSearchHistory[i];
 	
 			hist.attr('data-text', text);

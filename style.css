@@ -1,0 +1,84 @@
+body {
+	background-color: #00a6fb;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00a6fb), to(#66f6f2));
+}
+
+body h1,h2,h3,h4,h5,h6 {
+    color: #fafafa;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-transform: uppercase;
+}
+
+body h1,h2,h3 {
+    font-family: monoton, sans-serif;
+    line-height: 1.7;
+}
+
+.wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: inline;
+}
+
+header {
+    height: 425px;
+    margin: 0 0 5%;
+    padding: 0;
+    text-align: center;
+}
+
+a {
+	color: black
+}
+
+a:visited {
+	color: black;
+}
+
+
+.header_container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 0;
+    background-color: gray;
+    
+
+}
+
+.header_title {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    margin: 0 auto;
+    padding: 0 auto;
+    font-size: 2em;
+    /* text-align: left; */
+    background-color: gray;
+}
+
+.header_nav {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    margin: 4px 0;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.footer_NameBox {
+    background-color: gray;
+    text-align: center;
+    text-size-adjust: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
