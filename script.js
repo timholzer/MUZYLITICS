@@ -50,17 +50,18 @@ $(function() {
 		//Call youtube api, search for videos from the top 3? similar artists
 		for(i = 0; i < 5; i++)
 		{
-			let videos = await youtubeSearchApiCall(similarArtists[i].Name);
+			let name = similarArtists[i].Name;
+			let videos = await youtubeSearchApiCall(name);
 		
 			//Add the first video to the DOM
-			video = videos.items[0];
+			video = videos.items.filter(item => item.id.videoId)[0];
 			console.log("video", video);
 			let iframe = $('<iframe allowfullscreen>').attr('src', 'https://www.youtube.com/embed/' + video.id.videoId);
 			iframe.attr('width', '560').attr('height', '315');
 			iframe.attr('frameborder', '0').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
 			videoDiv.append(iframe);
 	
-			let link = $("<a>").attr('src', 'https://www.youtube.com/watch?v=' + video.id.videoId);
+			let link = $("<a>").attr('href', 'https://www.youtube.com/watch?v=' + video.id.videoId).text(name);
 			videoDiv.append(link);
 	
 			
@@ -84,7 +85,7 @@ $(function() {
 			//Return the response from the call
 			return res.Similar.Results;
 		}).catch(error => {
-			alert("There was an error " + error);
+			alert("There was an error " + error.error);
 			console.error(error);
 		});
 		return result;
@@ -103,7 +104,7 @@ $(function() {
 			//Return the response from the call
 			return res;
 		}).catch(error => {
-			alert(error);
+			alert("There was an error", error.error);
 			
 			console.error(error);
 			return [];
