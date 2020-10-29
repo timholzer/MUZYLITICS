@@ -65,9 +65,11 @@ $(function() {
 				iframe.attr('frameborder', '0').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
 				videoDiv.append(iframe);
 		
+				let linkCol = $('<div>').addClass('col');
 				let link = $("<a>").attr('href', 'https://www.youtube.com/watch?v=' + video.id.videoId).text("Alternate Youtube Link");
 				link.addClass('pl-3 pb-5');
-				videoDiv.append(link);
+				linkCol.append(link);
+				videoDiv.append(linkCol);
 
 				//Embed video, add link to DOM
 			}
