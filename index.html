@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
   <head>
 	<title>Similar Artists</title>
 	<!-- Required meta tags -->
@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body style="height: 100%;">
 	<a id="top"></a>
 	<header class="wrapper header-container">
 		<h1 class="header_title mx-auto"><i> Muzylitics - Expand Your Horizons</i></h1>
@@ -29,22 +29,22 @@
 
 
 	<!-- APIs: Spotify, TasteDive, Itunes Search, Youtube -->
-	<div class="container">
-		<div class="row">
+	<div class="container" style="height: calc(100% - 111px);">
+		<div class="row full-height" style="height: 100%;">
 			<div class="col-lg-3 col-sm-3 col-md-3 border-right">
-				<h4>Past Searches</h4>
+				<h4 class="p-2">Past Searches</h4>
 				<ul id="searchHistory" class="pl-0">
 
 				</ul>
 			</div>
-			<div class="col-lg-9 col-sm-9 col-md-9 ">
+			<div class="col-lg-9 col-sm-9 col-md-9 pl-5 full-height">
 				<div class="form-group pt-3 row">
 					<label for="search"></label>
 					<input type="text"
 						class="form-control" name="search" id="search-input" aria-describedby="helpId" placeholder="Search an artist to find similar artists">
 				</div>
-				<div class="row">
-					<div id="video-div">
+				<div id="video-div-row" class="row">
+					<div id="video-div" class="full-height">
 
 					</div>
 				</div>

@@ -15,6 +15,18 @@ body h1,h2,h3 {
     line-height: 1.7;
 }
 
+.full-height {
+    height: 100%;
+}
+
+#video-div-row {
+    height: calc(100% - 75px);
+}
+
+#video-div {
+    overflow-y: auto;
+}
+
 .wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -29,13 +41,18 @@ header {
 }
 
 a {
-	color: black
+    color: black;
+    font-size: 1.5em;
+    vertical-align: top;
 }
 
 a:visited {
 	color: black;
 }
 
+.form-control {
+    width: 90%
+}
 
 .header_container {
     -webkit-box-orient: horizontal;
