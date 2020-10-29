@@ -89,7 +89,7 @@ $(function() {
 			//Return the response from the call
 			return res.Similar.Results;
 		}).catch(error => {
-			alert("There was an error " + error.error);
+			buildRick();
 			console.error(error);
 		});
 		return result;
@@ -108,7 +108,7 @@ $(function() {
 			//Return the response from the call
 			return res;
 		}).catch(error => {
-			alert("There was an error", error.error);
+			buildRick();
 			
 			console.error(error);
 			return [];
