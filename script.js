@@ -7,7 +7,8 @@
 
 //Api Variables
 let proxy = 'https://cors-anywhere.herokuapp.com/'
-let youtubeKey = "&key=AIzaSyBrYHBqo3A_fYmsS9pr_20BBEgc52EOS30";
+let willYoutubeKey = "&key=AIzaSyBrYHBqo3A_fYmsS9pr_20BBEgc52EOS30";
+let timYoutubeKey = '&key=AIzaSyB74P7MbJivLatohgQSTjmszeLh-DyJP5Y';
 let tasteDivKey = '&k=389155-Bootcamp-98L8X8SY'
 let youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q=";
 let tasteDiveApiUrl = "https://tastedive.com/api/similar?q=";
@@ -33,7 +34,6 @@ $(function() {
 	
 		//Validate search, just trim? Don't know what else we can really validate
 		searchText = searchText.trim();
-		saveSearchToLocalStorage(searchText);
 	
 		//Call taste dive passing in the artist, saving the results for similar artists to a variable
 		//Save the results for similar artists from tasteDive in a variable
@@ -46,28 +46,32 @@ $(function() {
 			buildRick();
 			return;
 		}
-			
-		//Call youtube api, search for videos from the top 3? similar artists
-		for(i = 0; i < 5; i++)
+		else
 		{
-			let name = similarArtists[i].Name;
-			let videos = await youtubeSearchApiCall(name);
-		
-			//Add the first video to the DOM
-			video = videos.items.filter(item => item.id.videoId)[0];
-			console.log("video", video);
-			let iframe = $('<iframe allowfullscreen>').attr('src', 'https://www.youtube.com/embed/' + video.id.videoId);
-			iframe.attr('width', '560').attr('height', '315');
-			iframe.attr('frameborder', '0').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-			videoDiv.append(iframe);
-	
-			let link = $("<a>").attr('href', 'https://www.youtube.com/watch?v=' + video.id.videoId).text(name);
-			videoDiv.append(link);
-	
+			saveSearchToLocalStorage(searchText);
+			displaySavedSearches();
+
+			//Call youtube api, search for videos from the top 3? similar artists
+			for(i = 0; i < 5; i++)
+			{
+				let name = similarArtists[i].Name;
+				let videos = await youtubeSearchApiCall(name);
 			
-			//Embed video, add link to DOM
+				//Add the first video to the DOM
+				video = videos.items.filter(item => item.id.videoId)[0];
+				console.log("video", video);
+				let iframe = $('<iframe allowfullscreen>').attr('src', 'https://www.youtube.com/embed/' + video.id.videoId);
+				iframe.attr('width', '560').attr('height', '315');
+				iframe.attr('frameborder', '0').attr('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+				videoDiv.append(iframe);
+		
+				let link = $("<a>").attr('href', 'https://www.youtube.com/watch?v=' + video.id.videoId).text("Alternate Youtube Link");
+				link.addClass('pl-3 pb-5');
+				videoDiv.append(link);
+
+				//Embed video, add link to DOM
+			}
 		}
-	
 		//Add a couple embeddd videos and links to the screen for each of the top 3 similar artists
 	};
 	
@@ -97,7 +101,7 @@ $(function() {
 	 */
 	const youtubeSearchApiCall = async (artist) => {
 		//Build the url
-		let url = youtubeApiUrl + artist + youtubeKey;
+		let url = youtubeApiUrl + artist + timYoutubeKey;
 	
 		//Ajax call to the built URL, wait for a response, then return it
 		return await $.ajax( {url: url, method: 'GET'} ).then( res => {
@@ -149,6 +153,7 @@ $(function() {
 	 * Adds to the DOM
 	 */
 	const displaySavedSearches = () => {
+		$("#searchHistory").empty();
 	    for (i = 0; i < storedSearchHistory.length; i++) {
 	        var hist = $("<li>").addClass('past-search list-group-item'); //document.createElement("P");  
 			let text = storedSearchHistory[i];
