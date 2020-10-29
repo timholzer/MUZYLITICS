@@ -48,6 +48,7 @@ $(function() {
 		}
 		else
 		{
+			searchInput.val('');
 			saveSearchToLocalStorage(searchText);
 			displaySavedSearches();
 
@@ -55,7 +56,7 @@ $(function() {
 			for(i = 0; i < 5; i++)
 			{
 				let name = similarArtists[i].Name;
-				let videos = await youtubeSearchApiCall(name);
+				// let videos = await youtubeSearchApiCall(name);
 			
 				//Add the first video to the DOM
 				video = videos.items.filter(item => item.id.videoId)[0];
@@ -70,11 +71,8 @@ $(function() {
 				link.addClass('pl-3 pb-5');
 				linkCol.append(link);
 				videoDiv.append(linkCol);
-
-				//Embed video, add link to DOM
 			}
 		}
-		//Add a couple embeddd videos and links to the screen for each of the top 3 similar artists
 	};
 	
 	/**
@@ -145,6 +143,9 @@ $(function() {
 	const saveSearchToLocalStorage = (searchText) => {
 		if(!storedSearchHistory.includes(searchText))
 		{
+			if(storedSearchHistory.length === 9)
+				storedSearchHistory.splice(0, 1);
+				
 			storedSearchHistory.push(searchText);
 		    localStorage.setItem("Past Searches", JSON.stringify(storedSearchHistory ));
 		}
