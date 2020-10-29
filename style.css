@@ -25,6 +25,7 @@ body h1,h2,h3 {
 
 #video-div {
     overflow-y: auto;
+    width: 100%;
 }
 
 .wrapper {
@@ -44,6 +45,7 @@ a {
     color: black;
     font-size: 1.5em;
     vertical-align: top;
+    text-decoration: underline;
 }
 
 a:visited {
