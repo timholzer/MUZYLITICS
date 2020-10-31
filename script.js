@@ -101,7 +101,7 @@ $(function() {
 	 */
 	const youtubeSearchApiCall = async (artist) => {
 		//Build the url
-		let url = youtubeApiUrl + artist + timYoutubeKey;
+		let url = youtubeApiUrl + artist + willYoutubeKey;
 	
 		//Ajax call to the built URL, wait for a response, then return it
 		return await $.ajax( {url: url, method: 'GET'} ).then( res => {
