@@ -56,7 +56,7 @@ $(function() {
 			for(i = 0; i < 5; i++)
 			{
 				let name = similarArtists[i].Name;
-				// let videos = await youtubeSearchApiCall(name);
+				let videos = await youtubeSearchApiCall(name);
 			
 				//Add the first video to the DOM
 				video = videos.items.filter(item => item.id.videoId)[0];
