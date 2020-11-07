@@ -1,5 +1,5 @@
 # uofu-proj1
-The first project for U of U's coding bootcamp -TH CH WH HR
+A web app where you search a band name and get back Youtube links to five songs by similar bands.
 
 <a href="https://timholzer.github.io/uofu-proj1/">Github Pages Link</a>
 <img src="./muzylitics-img.png" alt="Muzylitics Screenshot" />
